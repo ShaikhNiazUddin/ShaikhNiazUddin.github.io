@@ -266,6 +266,59 @@ const artworkCollections = {
 ]
 };
 const artworkDimensions = {"0bfae5d99ecbdced49c8785c3d115641.webp": [736, 1041], "483662413_17869211550325629_7186667846387143356_n.webp": [640, 800], "487566527_17872091064325629_4462136799343680138_n.webp": [640, 800], "489372782_17873004747325629_9193937279379754301_n.webp": [640, 800], "489925579_122162109608357300_4406280979961816968_n.webp": [2460, 1080], "490221205_17873929926325629_3065605583071990257_n.webp": [640, 800], "500079774_17878752312325629_890446549547765472_n.webp": [640, 800], "504284763_17880721167325629_4927146836894196714_n.webp": [640, 800], "636982350_17911971978325629_4513447014360541649_n.webp": [640, 800], "656210061_17916783498325629_7487340317688459598_n.webp": [640, 800], "f629f86eae97dfce7d3893f5d26f875a.webp": [736, 1041], "44e11ac200591c731d16367b6e0cc6a3.webp": [736, 414], "472311342_122147162288357300_7549296279563701411_n.webp": [2024, 1100], "472748334_122147633858357300_7434435355081792360_n.webp": [1536, 2048], "476513535_17864719113325629_7230575852322787617_n.webp": [640, 800], "585603824_122193153716357300_2494916454890797870_n.webp": [1536, 2048], "84b8eaffc7628f848593d9884483a5b4.webp": [736, 736], "854defc317407cca010b4546436ccbca.webp": [736, 1041], "c6f8560fddd9ed03a96dbd495b3f9381.webp": [736, 1041], "eccfd2947413be1da6cf8f7388bcff28.webp": [736, 1041], "save28.webp": [1024, 695], "485080568_17870250171325629_1551329290941445955_n.webp": [1440, 1440], "487899519_17872065069325629_3748236320124976285_n.webp": [640, 800], "488661884_17872517793325629_2781373785924605388_n.webp": [640, 800], "590425405_17902998408325629_3688081521729237489_n.webp": [640, 800], "626532316_17909962755325629_2957486348244969607_n.webp": [1080, 1440], "630469480_17910688146325629_8731330893969615116_n.webp": [640, 853], "641182292_17912832900325629_7207039383338564758_n.webp": [640, 800], "642507821_17914497501325629_1364074525633058402_n.webp": [640, 800], "643109749_17914613082325629_5410073097169072095_n.webp": [640, 800], "Image017.webp": [1500, 1500], "3.png": [2000, 2500], "2.png": [2000, 2500], "01.webp": [2000, 2500], "26.webp": [4320, 4320], "download.webp": [640, 640], "irfan.webp": [2975, 4210], "Image007.webp": [2000, 2000], "Image005.webp": [695, 1024], "@ig_evileye.webp": [1080, 1080], "@machine__gaming @gsm_badrev (1).webp": [1080, 1080], "@machine__gaming @gsm_badrev.webp": [1080, 1080], "438060535_1988957981524723_5775338052315988454_n.webp": [1080, 1080], "313172286_231495155911510_1668793897761693141_n.webp": [2048, 2048], "ewu-debating-puja-greeting.webp": [2000, 2500], "ewupc-asiful-islam-congratulations.webp": [2000, 2500]};
+function artworkContainsPoint(target,x,y){
+ const image=target.closest('img');
+ if(!image||!image.naturalWidth)return false;
+ const rect=image.getBoundingClientRect();
+ const scale=Math.min(rect.width/image.naturalWidth,rect.height/image.naturalHeight);
+ const width=image.naturalWidth*scale,height=image.naturalHeight*scale;
+ return x>=rect.left+(rect.width-width)/2&&x<=rect.right-(rect.width-width)/2&&y>=rect.top+(rect.height-height)/2&&y<=rect.bottom-(rect.height-height)/2;
+}
+function initializeNativeMobileGallery(gallery,section,cards,reduced){
+ if(!document.querySelector('#native-mobile-gallery-style')){
+  const style=document.createElement('style');style.id='native-mobile-gallery-style';
+  style.textContent=`.gallery.native-mobile-gallery,#org-panel .gallery.native-mobile-gallery{touch-action:pan-x pan-y pinch-zoom;scroll-snap-type:x mandatory;scroll-behavior:auto;overflow-x:auto;overscroll-behavior-x:contain;gap:14px;padding:24px 7vw 28px;-webkit-overflow-scrolling:touch;align-items:center}.native-mobile-gallery .artwork{flex:0 0 86vw;scroll-snap-align:center;scroll-snap-stop:always;display:flex;align-items:center;justify-content:center;opacity:1;transform:none;filter:none;transition:none}.native-mobile-gallery .artwork img{width:auto!important;max-width:100%!important;height:auto!important;max-height:60svh!important;object-fit:contain;animation:none!important;box-shadow:none!important;border:0!important;pointer-events:auto}.native-mobile-gallery .artwork:not(.is-center){opacity:.65}.native-mobile-gallery .artwork img{border-radius:0}`;
+  document.head.append(style);
+ }
+ gallery.classList.add('native-mobile-gallery');
+ let selected=0,settleTimer=0,autoTimer=0,start=null,moved=false,visible=false;
+ const leftFor=index=>cards[index].offsetLeft-gallery.offsetLeft-(gallery.clientWidth-cards[index].offsetWidth)/2;
+ function select(index,smooth=true){
+  selected=Math.max(0,Math.min(cards.length-1,index));
+  gallery.scrollTo({left:leftFor(selected),behavior:smooth&&!reduced.matches?'smooth':'instant'});
+ }
+ function highlight(){
+  let nearest=0,distance=Infinity;
+  cards.forEach((card,i)=>{const d=Math.abs(leftFor(i)-gallery.scrollLeft);if(d<distance){distance=d;nearest=i;}});
+  selected=nearest;cards.forEach((card,i)=>card.classList.toggle('is-center',i===selected));
+ }
+ function auto(){
+  clearTimeout(autoTimer);
+  if(reduced.matches)return;
+  autoTimer=setTimeout(()=>{
+   if(visible&&!document.hidden&&!start&&!document.querySelector('dialog[open]'))select((selected+1)%cards.length,selected<cards.length-1);
+   auto();
+  },6500);
+ }
+ gallery.addEventListener('scroll',()=>{clearTimeout(settleTimer);settleTimer=setTimeout(highlight,100);},{passive:true});
+ gallery.addEventListener('pointerdown',e=>{clearTimeout(autoTimer);start={x:e.clientX,y:e.clientY};moved=false;},{passive:true});
+ gallery.addEventListener('pointermove',e=>{if(start&&Math.hypot(e.clientX-start.x,e.clientY-start.y)>8)moved=true;},{passive:true});
+ const release=()=>{start=null;auto();};
+ gallery.addEventListener('pointerup',release,{passive:true});gallery.addEventListener('pointercancel',release,{passive:true});
+ gallery.addEventListener('click',e=>{
+  if(moved){e.preventDefault();return;}
+  if(artworkContainsPoint(e.target,e.clientX,e.clientY))openArtwork(e.target.closest('img'));
+ });
+ for(const direction of [-1,1]){
+  const button=section.querySelector(`[data-step="${direction}"]`);
+  if(button){button.disabled=false;button.addEventListener('click',()=>{select(selected+direction);auto();});}
+ }
+ gallery.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();select(selected+(e.key==='ArrowRight'?1:-1));auto();}});
+ new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible)auto();else clearTimeout(autoTimer);},{threshold:.2}).observe(gallery);
+ let width=gallery.clientWidth;
+ addEventListener('resize',()=>{if(Math.abs(gallery.clientWidth-width)>2){width=gallery.clientWidth;select(selected,false);}},{passive:true});
+ requestAnimationFrame(()=>{select(0,false);highlight();});
+}
 function initializeGallery(gallery) {
   const freeVerticalScroll = document.body.dataset.gallery === 'posters';
   const section = gallery.closest('.gallery-section') || document;
@@ -342,6 +395,10 @@ function initializeGallery(gallery) {
     }
   }
   const originals = [...gallery.children];
+  if(matchMedia('(pointer: coarse)').matches){
+    initializeNativeMobileGallery(gallery,section,originals,reduced);
+    return;
+  }
   let cards = [], period = 1, base = 0, position = 0, target = 0;
   let stride=1,origin=0,centerCard=null,lastWidth=0;
   let frameId = 0, drag = null, lastTime = 0, snapTimer,driftResumeTimer;
@@ -446,6 +503,7 @@ function initializeGallery(gallery) {
   }, {passive:false});
   gallery.addEventListener('pointerdown', event => {
     if (event.button !== 0) return;
+    if(!artworkContainsPoint(event.target,event.clientX,event.clientY))return;
     clearTimeout(snapTimer);
     drag = {x:event.clientX,y:event.clientY,startX:event.clientX,moved:0,touch:event.pointerType==='touch',anchor:centerTarget(target),horizontal:event.pointerType!=='touch',image:event.target.closest('.artwork')?.querySelector('img')};
     target = position;
