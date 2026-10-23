@@ -485,10 +485,10 @@
         }
         #about { -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
     </style>
-<link rel="stylesheet" href="organization-work.css"><script src="artwork-gallery.js" defer></script><script src="organization-work.js" defer></script><link rel="stylesheet" href="site-polish.css"><link rel="stylesheet" href="hero-calligraphy.css"><script src="hero-calligraphy.js" defer></script><link rel="stylesheet" href="portfolio-loader.css"><script src="portfolio-loader.js" defer></script><link rel="stylesheet" href="passion-door.css"><script src="passion-door.js" defer></script><script src="home-logo.js" defer></script><script src="reactive-glass.js" defer></script><link rel="stylesheet" href="gentle-scroll.css"><script src="gentle-scroll.js" defer></script><script src="landing-about-scroll.js" defer></script></head>
+<link rel="stylesheet" href="organization-work.css"><script src="artwork-gallery.js" defer></script><script src="organization-work.js" defer></script><link rel="stylesheet" href="site-polish.css"><link rel="stylesheet" href="hero-calligraphy.css"><script src="hero-calligraphy.js" defer></script><link rel="stylesheet" href="portfolio-loader.css?v=20261023-fast"><script src="portfolio-loader.js?v=20261023-fast" defer></script><link rel="stylesheet" href="passion-door.css"><script src="passion-door.js" defer></script><script src="home-logo.js" defer></script><script src="reactive-glass.js" defer></script><link rel="stylesheet" href="gentle-scroll.css"><script src="gentle-scroll.js" defer></script></head>
 <body class="bg-palette-black text-palette-lightgrey font-sans antialiased selection:bg-palette-crimson selection:text-white min-h-screen flex flex-col justify-between overflow-x-hidden">
 <div class="portfolio-loader" role="region" aria-label="Portfolio introduction">
-<div class="loader-word" aria-label="Portfolio"><span aria-hidden="true">PORT</span><span class="loader-art" aria-hidden="true"><img src="artworks/bangla-typography/lettering/476017805_122151797912357300_2247948479329770162_n--jpg.webp" alt=""><img src="artworks/bangla-typography/lettering/476079316_122151797972357300_8660503932024443208_n--jpg.webp" alt=""><img src="artworks/bangla-typography/lettering/476106877_122151797828357300_2714550559650615253_n%20%281%29--jpg.webp" alt=""><img src="artworks/bangla-typography/lettering/485647402_17870883861325629_332027215192450896_n.webp" alt=""><img src="artworks/bangla-typography/lettering/542943067_17892157050325629_2858688447425471685_n.webp" alt=""><img src="artworks/bangla-typography/lettering/544329092_17892745548325629_3523128038941729574_n.webp" alt=""><img src="artworks/bangla-typography/graphic-type/19--png.webp" alt="" data-loader-final></span><span aria-hidden="true">FOLIO</span></div>
+<div class="loader-word" aria-label="Portfolio"><span aria-hidden="true">PORT</span><span class="loader-art" aria-hidden="true"><img src="artworks/loader-previews/preview-01.webp" alt=""><img src="artworks/loader-previews/preview-02.webp" alt=""><img src="artworks/loader-previews/preview-03.webp" alt=""><img src="artworks/loader-previews/preview-04.webp" alt=""><img src="artworks/loader-previews/preview-05.webp" alt=""><img src="artworks/loader-previews/preview-06.webp" alt=""><img src="artworks/loader-previews/preview-07.webp" alt="" data-loader-final></span><span aria-hidden="true">FOLIO</span></div>
 <button class="loader-skip" type="button">Skip intro ↗</button></div>
 
     <svg width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none" xmlns="http://www.w3.org/2000/svg">
@@ -673,7 +673,7 @@
 
     <!-- 04. FOOTER / CONTACT SECTION -->
 <section id="passion" class="passion-section" aria-labelledby="passion-title">
-<div class="passion-furniture" aria-hidden="true"><img class="passion-chair" src="artworks/passion/chair-lamp.webp" alt=""><img class="passion-tv" src="artworks/passion/tv.webp" alt=""><img class="passion-bookshelf" src="artworks/passion/bookshelf-v2.webp" alt=""></div><div class="passion-inner"><div class="passion-copy"><span class="passion-eyebrow">A little more of me</span><h2 id="passion-title">Where My Heart<br>Belongs...</h2><p>Some things are more than work.</p></div>
+<div class="passion-furniture" aria-hidden="true"><img loading="lazy" decoding="async" class="passion-chair" src="artworks/passion/chair-lamp.webp" alt=""><img loading="lazy" decoding="async" class="passion-tv" src="artworks/passion/tv.webp" alt=""><img loading="lazy" decoding="async" class="passion-bookshelf" src="artworks/passion/bookshelf-v2.webp" alt=""></div><div class="passion-inner"><div class="passion-copy"><span class="passion-eyebrow">A little more of me</span><h2 id="passion-title">Where My Heart<br>Belongs...</h2><p>Some things are more than work.</p></div>
 <div class="passion-door-rise"><div class="passion-door-stage"><div class="passion-door-frame"><div class="passion-door-light" aria-hidden="true"></div><div class="passion-door-leaf"><button class="passion-knob" type="button" aria-label="Open the door to my passions"><span aria-hidden="true"></span></button></div></div></div><span class="passion-door-hint">Turn the knob. Come inside. ↗</span></div></div></section>
     <footer id="contact" class="py-28 px-4 sm:px-8 max-w-7xl mx-auto border-t border-white/10">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20">
@@ -1469,5 +1469,73 @@
       }
     ]
   }
-]</script></body>
+]</script><script>
+(() => {
+ const hero=document.querySelector('.hero-landing'),about=document.querySelector('#about');
+ if(!hero||!about||window.landingAboutReady)return;
+ window.landingAboutReady=true;
+ const reduced=matchMedia('(prefers-reduced-motion: reduce)'),root=document.documentElement;
+ let frame=0,active=false,direction=0,quietUntil=0,oldBehavior='',touch=null;
+ const aboutTop=()=>about.getBoundingClientRect().top+scrollY;
+ function excluded(target){return target.closest('a,button,input,textarea,select,video,#org-panel,#menu,#project-modal')||document.querySelector('dialog[open],#menu-btn[aria-expanded="true"]')||reduced.matches;}
+ function destination(down,y=scrollY){
+  const edge=aboutTop();
+  if(down&&y<edge-4)return edge;
+  if(!down&&y>3&&y<=edge+8)return 0;
+  return null;
+ }
+ function cancel(){
+  cancelAnimationFrame(frame);frame=0;
+  if(active)root.style.scrollBehavior=oldBehavior;
+  active=false;delete root.dataset.landingTransition;
+ }
+ function glide(target,down){
+  cancel();const start=scrollY;oldBehavior=root.style.scrollBehavior;
+  root.style.scrollBehavior='auto';root.dataset.landingTransition='true';active=true;direction=down?1:-1;
+ const began=performance.now(),duration=620;
+  function step(now){
+   const p=Math.min(1,(now-began)/duration),ease=p*p*(3-2*p);
+   const end=target===0?0:aboutTop();
+   scrollTo({top:start+(end-start)*ease,behavior:'instant'});
+   if(p<1)frame=requestAnimationFrame(step);
+   else{cancel();quietUntil=performance.now()+180;}
+  }
+  frame=requestAnimationFrame(step);
+ }
+ addEventListener('wheel',event=>{
+  if(event.ctrlKey||Math.abs(event.deltaY)<=Math.abs(event.deltaX)||excluded(event.target))return;
+  const down=event.deltaY>0,sign=down?1:-1;
+  if(active&&sign===direction){event.preventDefault();return;}
+  if(!active&&performance.now()<quietUntil&&sign===direction){event.preventDefault();return;}
+  if(active)cancel();
+  const target=destination(down);
+  if(target===null)return;
+  event.preventDefault();glide(target,down);
+ },{passive:false,capture:true});
+ addEventListener('touchstart',event=>{
+  cancel();touch=event.touches.length===1&&!excluded(event.target)?{x:event.touches[0].clientX,y:event.touches[0].clientY,scroll:scrollY,target:null}:null;
+ },{passive:true});
+ addEventListener('touchmove',event=>{
+  if(!touch||event.touches.length!==1)return;
+  const dx=touch.x-event.touches[0].clientX,dy=touch.y-event.touches[0].clientY;
+  if(Math.abs(dy)<12||Math.abs(dy)<=Math.abs(dx))return;
+  const target=destination(dy>0,touch.scroll);
+  if(target!==null){event.preventDefault();touch.target=target;touch.down=dy>0;}
+ },{passive:false});
+ addEventListener('touchend',()=>{if(touch?.target!==null&&touch?.target!==undefined)glide(touch.target,touch.down);touch=null;},{passive:true});
+ addEventListener('touchcancel',()=>{touch=null;cancel();},{passive:true});
+ let lastY=scrollY,settleTimer=0;
+ addEventListener('scroll',()=>{
+  const y=scrollY,delta=y-lastY;lastY=y;
+  clearTimeout(settleTimer);
+  if(active||touch||reduced.matches||!delta||root.classList.contains('portfolio-loading'))return;
+  const target=destination(delta>0,y);
+  if(target!==null)settleTimer=setTimeout(()=>{if(!active&&!touch)glide(target,delta>0);},70);
+ },{passive:true});
+ addEventListener('pointerdown',cancel,{passive:true});
+ addEventListener('keydown',cancel);
+ addEventListener('pagehide',()=>{clearTimeout(settleTimer);cancel();});reduced.addEventListener('change',cancel);
+})();
+
+</script></body>
 </html>

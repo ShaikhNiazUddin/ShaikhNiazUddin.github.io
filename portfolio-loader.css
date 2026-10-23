@@ -19,3 +19,4 @@ html.portfolio-loading{overflow:hidden!important}
 @keyframes loader-word-enter{from{opacity:0;transform:translateY(24px);filter:blur(7px)}to{opacity:1;transform:none;filter:blur(0)}}
 @media(max-width:600px){.loader-word{font-size:7.4vw}.portfolio-loader.loader-open .loader-art{width:14vw;height:17.5vw;margin:0 2vw}.portfolio-loader.loader-open.loader-large .loader-art{width:16vw;height:20vw;margin:0 2vw}}
 @media(prefers-reduced-motion:reduce){.loader-word{animation:none}}
+.portfolio-loader.loader-exit{transition-duration:.25s!important}
