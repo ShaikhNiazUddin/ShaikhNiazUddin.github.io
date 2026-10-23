@@ -1,0 +1,9 @@
+/* Native scrollbar: crimson thumb over a measured black ruler track. */
+html{scrollbar-gutter:stable}
+html::-webkit-scrollbar{width:16px;height:12px;background:#080808}
+html::-webkit-scrollbar-track{background-color:#080808;background-image:linear-gradient(to right,#ffffff35,#ffffff35),repeating-linear-gradient(to bottom,#ffffff42 0 1px,transparent 1px 10px),repeating-linear-gradient(to bottom,#CB2957aa 0 1px,transparent 1px 50px);background-size:1px 100%,7px 100%,12px 100%;background-position:right top,right top,right top;background-repeat:no-repeat;border-left:1px solid #ffffff12}
+html::-webkit-scrollbar-thumb{background:#CB2957;border:3px solid #080808;border-radius:4px;min-height:44px}
+html::-webkit-scrollbar-thumb:hover{background:#ee4777}
+html::-webkit-scrollbar-thumb:active{background:#ff749b}
+html::-webkit-scrollbar-corner{background:#080808}
+@supports not selector(::-webkit-scrollbar){html{scrollbar-color:#CB2957 #080808;scrollbar-width:auto}}
