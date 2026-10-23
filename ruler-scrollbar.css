@@ -7,3 +7,11 @@ html::-webkit-scrollbar-thumb:hover{background:#ee4777}
 html::-webkit-scrollbar-thumb:active{background:#ff749b}
 html::-webkit-scrollbar-corner{background:#080808}
 @supports not selector(::-webkit-scrollbar){html{scrollbar-color:#CB2957 #080808;scrollbar-width:auto}}
+html.ruler-ready{scrollbar-width:none;scrollbar-gutter:auto}
+html.ruler-ready::-webkit-scrollbar{display:none;width:0}
+.ruler-rail{position:fixed;top:0;right:0;bottom:0;width:16px;z-index:9990;background:#080808;border-left:1px solid #ffffff1c;touch-action:none;cursor:pointer;background-image:repeating-linear-gradient(to bottom,#ddd8 0 1px,transparent 1px 10px),repeating-linear-gradient(to bottom,#CB2957 0 1px,transparent 1px 50px);background-size:7px 100%,13px 100%;background-position:right top;background-repeat:no-repeat}
+.ruler-rail[hidden]{display:none}
+.ruler-thumb{position:absolute;top:0;left:2px;right:2px;min-height:38px;border:2px solid #080808;background:#CB2957;border-radius:3px;cursor:grab;will-change:transform}
+.ruler-thumb:hover,.ruler-rail.is-dragging .ruler-thumb{background:#ee4777}
+.ruler-rail.is-dragging .ruler-thumb{cursor:grabbing}
+.ruler-thumb:focus-visible{outline:1px solid white;outline-offset:-1px}

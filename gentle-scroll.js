@@ -10,7 +10,7 @@
   animating=false;
  }
  function settle(){
-  if(touching||reduced.matches||blocked())return;
+  if(touching||reduced.matches||blocked()||document.documentElement.dataset.rulerDragging)return;
   const y=scrollY,max=Math.max(0,document.documentElement.scrollHeight-innerHeight);
   const candidates=sections.flatMap(section=>{
    const top=section.getBoundingClientRect().top+y;
