@@ -85,3 +85,4 @@
 .lightbox-close{position:absolute;right:20px;top:16px;width:44px;height:44px;border:1px solid #555;border-radius:50%;background:#181818;color:#fff;font-size:30px;line-height:1;display:grid;place-items:center;padding:0}
 @media(max-width:650px){#org-panel .tahams-gallery .artwork{flex-basis:72vw}}
 @media(prefers-reduced-motion:reduce){#org-panel .tahams-gallery .artwork{transition:none}}
+#org-panel .tahams-gallery{touch-action:pan-y pinch-zoom}

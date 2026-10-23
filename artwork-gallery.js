@@ -343,7 +343,8 @@ function initializeGallery(gallery) {
   }
   const originals = [...gallery.children];
   let cards = [], period = 1, base = 0, position = 0, target = 0;
-  let frameId = 0, drag = null, lastTime = 0, snapTimer;
+  let stride=1,origin=0,centerCard=null,lastWidth=0;
+  let frameId = 0, drag = null, lastTime = 0, snapTimer,driftResumeTimer;
   let hovered = false, focused = false, visible = false, resumeAt = 0;
   function canDrift() {
     return visible && !hovered && !focused && !drag && !reduced.matches && !document.hidden && !document.querySelector('dialog[open]') && performance.now() >= resumeAt;
@@ -353,15 +354,9 @@ function initializeGallery(gallery) {
   if (previous) previous.disabled = false;
   if (next) next.disabled = false;
   function highlight() {
-    const bounds = gallery.getBoundingClientRect();
-    const center = bounds.left + bounds.width / 2;
-    let nearest, distance = Infinity;
-    cards.forEach(card => {
-      const rect = card.getBoundingClientRect();
-      const delta = Math.abs(rect.left + rect.width / 2 - center);
-      if (delta < distance) { distance = delta; nearest = card; }
-    });
-    cards.forEach(card => card.classList.toggle('is-center', card === nearest));
+    const nearest=cards[Math.max(0,Math.min(cards.length-1,Math.round((position-origin)/stride)))];
+    if(nearest===centerCard)return;
+    centerCard?.classList.remove('is-center');nearest?.classList.add('is-center');centerCard=nearest;
   }
   function paint() {
     gallery.scrollLeft = position;
@@ -386,6 +381,7 @@ function initializeGallery(gallery) {
   }
   function wake() { if (!frameId) frameId = requestAnimationFrame(animate); }
   function build() {
+    lastWidth=gallery.clientWidth;
     if (frameId) cancelAnimationFrame(frameId);
     frameId = 0; lastTime = 0;
     gallery.replaceChildren(...originals);
@@ -405,6 +401,7 @@ function initializeGallery(gallery) {
     gallery.replaceChildren(fragment);
     cards = [...gallery.children];
     const padding = parseFloat(getComputedStyle(gallery).paddingLeft) || 0;
+    stride=step;origin=padding+cardWidth/2-gallery.clientWidth/2;centerCard=null;
     base = sideSets * period;
     position = target = base + padding + cardWidth / 2 - gallery.clientWidth / 2;
     normalize(); paint();
@@ -450,13 +447,18 @@ function initializeGallery(gallery) {
   gallery.addEventListener('pointerdown', event => {
     if (event.button !== 0) return;
     clearTimeout(snapTimer);
-    drag = {x:event.clientX, moved:0, image:event.target.closest('.artwork')?.querySelector('img')};
+    drag = {x:event.clientX,y:event.clientY,startX:event.clientX,moved:0,horizontal:event.pointerType!=='touch',image:event.target.closest('.artwork')?.querySelector('img')};
     target = position;
-    gallery.setPointerCapture(event.pointerId);
-    gallery.classList.add('dragging');
+    if(drag.horizontal){gallery.setPointerCapture(event.pointerId);gallery.classList.add('dragging');}
   });
   gallery.addEventListener('pointermove', event => {
     if (!drag) return;
+    if(!drag.horizontal){
+      const dx=event.clientX-drag.startX,dy=event.clientY-drag.y;
+      if(Math.max(Math.abs(dx),Math.abs(dy))<10)return;
+      if(Math.abs(dy)>=Math.abs(dx)){drag=null;resumeAt=performance.now()+700;setTimeout(wake,720);return;}
+      drag.horizontal=true;gallery.setPointerCapture(event.pointerId);gallery.classList.add('dragging');
+    }
     drag.moved += Math.abs(drag.x - event.clientX);
     target += drag.x - event.clientX;
     drag.x = event.clientX;
@@ -465,10 +467,12 @@ function initializeGallery(gallery) {
   function stopDrag(event) {
     if (!drag) return;
     const clickedImage = event.type === 'pointerup' && drag.moved < 6 ? drag.image : null;
+    const horizontal=drag.horizontal;
     drag = null;
     if (clickedImage) openArtwork(clickedImage);
     gallery.classList.remove('dragging');
-    target = centerTarget(target);
+    if(horizontal&&event.type==='pointerup')target = centerTarget(target);
+    resumeAt=performance.now()+700;setTimeout(wake,720);
     wake();
   }
   gallery.addEventListener('pointerup', stopDrag);
@@ -507,7 +511,8 @@ function initializeGallery(gallery) {
     if (reduced.matches) pauseAndSnap();
     else wake();
   });
-  addEventListener('resize', build, {passive:true});
+  addEventListener('resize',()=>{if(Math.abs(gallery.clientWidth-lastWidth)>2)build();},{passive:true});
+  addEventListener('scroll',()=>{resumeAt=performance.now()+450;clearTimeout(driftResumeTimer);driftResumeTimer=setTimeout(wake,470);},{passive:true});
   build();
 }
 document.querySelectorAll('.gallery').forEach(initializeGallery);

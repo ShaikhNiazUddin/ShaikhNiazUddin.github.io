@@ -11,6 +11,8 @@
 @keyframes artwork-breathe{0%,100%{translate:0 0}50%{translate:0 -5px}}
 @media(prefers-reduced-motion:reduce){.artwork,.artwork img,.artwork-slot{transition:none}.artwork.is-center img{animation:none}}
 /* Center gallery navigation beneath the artwork. */
+.gallery{touch-action:pan-y pinch-zoom}
+@media(pointer:coarse){.artwork{transition:opacity .2s,transform .2s;filter:none}.artwork.is-center img{animation:none}.artwork.is-center img{box-shadow:none}}
 body[data-gallery=posters] .gallery{touch-action:pan-y pinch-zoom}
 .controls{margin:0 auto;justify-content:center;padding:0 20px 32px;gap:12px}
 
