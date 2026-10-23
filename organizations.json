@@ -1,0 +1,256 @@
+[
+  {
+    "id": "tahams",
+    "name": "Tahams",
+    "group": "company",
+    "role": "Creative Visual Designer",
+    "description": "I started at Tahams as an intern. After three months, I joined the team as a Creative Visual Designer. I design T-shirts and posters for Tahams and its sister businesses.",
+    "status": "Aug 2026 – Present",
+    "logo": "artworks/organizations/tahams-transparent.webp",
+    "light": false,
+    "artworks": [
+      "artworks/t-shirt-design/692252553_984208834105859_8100645087096567877_n.webp",
+      "artworks/t-shirt-design/692816278_984209047439171_2051593961065842798_n.webp",
+      "artworks/t-shirt-design/729324946_1950630878984530_7758544076756451004_n.webp",
+      "artworks/t-shirt-design/729499514_894487333697560_3000609322834342142_n.webp"
+    ],
+    "timeline": [
+      {
+        "date": "3 months",
+        "title": "Design internship",
+        "text": "Started as an intern before joining the team officially."
+      },
+      {
+        "date": "Aug 2026 – Present",
+        "title": "Creative Visual Designer",
+        "text": "Designing T-shirts and posters for Tahams and its sister businesses."
+      }
+    ]
+  },
+  {
+    "id": "honeycomb",
+    "name": "HoneyComb Inc.",
+    "group": "company",
+    "role": "Parent company of Tahams",
+    "description": "HoneyComb Inc. is the parent company of Tahams. My work is through Tahams, where I design T-shirts and posters for the company and its sister businesses.",
+    "status": "Current · Through Tahams",
+    "logo": "artworks/organizations/honeycomb-original.webp",
+    "light": false,
+    "artworks": [],
+    "timeline": [
+      {
+        "date": "Present",
+        "title": "Work through Tahams",
+        "text": "HoneyComb is Tahams’ parent company. My design work is through Tahams and its sister businesses."
+      }
+    ]
+  },
+  {
+    "id": "jci",
+    "name": "JCI Bangladesh",
+    "group": "company",
+    "role": "Mukto Pani · Logo & visual identity",
+    "description": "I worked on the logo and visual identity for Mukto Pani, an award-winning community project by JCI Dhaka Imperial, a local chapter of JCI Bangladesh. The project focuses on clean water and sanitation and supports SDG 6.",
+    "status": "2025",
+    "logo": "artworks/organizations/jci-original.webp",
+    "light": false,
+    "artworks": [
+      "artworks/logos/mukto-pani/main-logo--jpg.webp",
+      "artworks/logos/mukto-pani/483155214_17868656643325629_3297331789674524568_n.webp"
+    ],
+    "projectLink": "logo-mukto-pani.html",
+    "timeline": [
+      {
+        "date": "2025",
+        "title": "Mukto Pani project",
+        "text": "Worked on the logo and visual identity for the JCI Dhaka Imperial community project."
+      }
+    ]
+  },
+  {
+    "id": "h-brand",
+    "name": "Huckleberry Natural BD",
+    "group": "company",
+    "role": "General Sales Manager",
+    "description": "I worked as a General Sales Manager at Huckleberry Natural BD, a business that sells natural care products.",
+    "status": "Apr 2025 – Aug 2025",
+    "logo": "artworks/organizations/h-brand-original.webp",
+    "light": false,
+    "artworks": [],
+    "website": "https://huckleberrybd.com/",
+    "timeline": [
+      {
+        "date": "Apr 2025 – Aug 2025",
+        "title": "General Sales Manager",
+        "text": "Worked with the natural care product business."
+      }
+    ]
+  },
+  {
+    "id": "p-brand",
+    "name": "Paper House — Web Design Agency",
+    "group": "company",
+    "role": "Logo design · Parent agency",
+    "description": "Paper House Web Design Agency is the parent business of Paper House Design Agency, where I work part-time. I designed both logos. I am not directly employed by the web design agency.",
+    "status": "",
+    "logo": "artworks/organizations/paper-house-web-v2.webp",
+    "light": false,
+    "artworks": [
+      "artworks/organizations/paper-house-web-v2.webp"
+    ],
+    "website": "https://hq.paperhouse.agency/"
+  },
+  {
+    "id": "paper-house",
+    "name": "Paper House — Design Agency",
+    "group": "company",
+    "role": "Part-time Designer",
+    "description": "I currently work part-time as a designer at Paper House. I designed the logos for both the design agency and its parent web design agency. My current work focuses on redesigning logos for clients.",
+    "status": "Currently working",
+    "logo": "artworks/organizations/paper-house-design-updated.webp",
+    "light": false,
+    "artworks": [
+      "artworks/organizations/paper-house-design-updated.webp",
+      "artworks/organizations/paper-house-web-v2.webp"
+    ],
+    "timeline": [
+      {
+        "date": "Present",
+        "title": "Part-time Designer",
+        "text": "Designed both Paper House logos. Currently redesigning logos for clients."
+      }
+    ]
+  },
+  {
+    "id": "ewudc",
+    "name": "East West University Debating Club",
+    "group": "club",
+    "role": "Designer",
+    "description": "I joined the East West University Debating Club as a designer. I create event posters, announcements and campaign graphics for the club.",
+    "status": "",
+    "logo": "artworks/organizations/ewudc-transparent.webp",
+    "light": false,
+    "artworks": [
+      "artworks/organizations/ewudc/selected-work/work-01--png.webp",
+      "artworks/organizations/ewudc/selected-work/work-02--png.webp",
+      "artworks/organizations/ewudc/selected-work/work-03--png.webp",
+      "artworks/organizations/ewudc/selected-work/work-04--png.webp",
+      "artworks/organizations/ewudc/selected-work/work-05--png.webp",
+      "artworks/organizations/ewudc/selected-work/work-06--png.webp"
+    ],
+    "timeline": [
+      {
+        "date": "Joined as Designer",
+        "title": "Club design work",
+        "text": "Designing posters and graphics for club events and announcements."
+      }
+    ]
+  },
+  {
+    "id": "mmsrc",
+    "name": "Motijheel Model Science Club",
+    "group": "club",
+    "role": "Former President",
+    "description": "I started as a general member of Motijheel Model Science Club and became a senior volunteer in 2019. I served as president from 2021 to 2022. I also contributed designs and worked on the club logo redesign.",
+    "status": "President 2021–2022",
+    "logo": "artworks/organizations/mmsrc-transparent.webp",
+    "light": false,
+    "artworks": [
+      "artworks/organizations/mmsrc/selected-work/work-01.webp",
+      "artworks/organizations/mmsrc/selected-work/work-02.webp",
+      "artworks/logos/mmsrc/499508255_17878236108325629_6879045343909177482_n.webp",
+      "artworks/logos/mmsrc/499803220_17878236126325629_2454529360045920807_n.webp"
+    ],
+    "timeline": [
+      {
+        "date": "First role",
+        "title": "General Member",
+        "text": "Took part in club activities."
+      },
+      {
+        "date": "2019",
+        "title": "Senior Volunteer",
+        "text": "Promoted from general member."
+      },
+      {
+        "date": "2021–2022",
+        "title": "President",
+        "text": "Led the club and its activities."
+      }
+    ]
+  },
+  {
+    "id": "mmds",
+    "name": "Motijheel Model Debating Society",
+    "group": "club",
+    "role": "Former Organizing Secretary",
+    "description": "I joined Motijheel Model Debating Society as a member and became Organizing Secretary in 2021. I helped organize club activities and contributed design work.",
+    "status": "",
+    "logo": "artworks/organizations/mmds-transparent.webp",
+    "light": false,
+    "artworks": [
+      "artworks/organizations/mmds/selected-work/work-01.webp"
+    ],
+    "timeline": [
+      {
+        "date": "First role",
+        "title": "Member",
+        "text": "Joined the debating society."
+      },
+      {
+        "date": "2021",
+        "title": "Organizing Secretary",
+        "text": "Promoted to help organize club activities."
+      }
+    ]
+  },
+  {
+    "id": "hpc",
+    "name": "HPC Science Club",
+    "group": "club",
+    "role": "Former President & Advisor",
+    "description": "I joined HPC Science Club in 2023 and served as president from 2023 to 2024. I then supported the club as an advisor from 2024 to 2025.",
+    "status": "2023–2025",
+    "logo": "artworks/organizations/hpc-transparent.webp",
+    "light": false,
+    "artworks": [],
+    "timeline": [
+      {
+        "date": "2023",
+        "title": "Joined HPC Science Club",
+        "text": "Began taking part in club activities."
+      },
+      {
+        "date": "2023–2024",
+        "title": "President",
+        "text": "Led the club and its activities."
+      },
+      {
+        "date": "2024–2025",
+        "title": "Advisor",
+        "text": "Supported the next leadership team."
+      }
+    ]
+  },
+  {
+    "id": "ewupc",
+    "name": "East West University Photography Club",
+    "group": "club",
+    "role": "Designer",
+    "description": "I joined the East West University Photography Club as a designer. I create posters and graphics for club celebrations, announcements and member achievements.",
+    "status": "",
+    "logo": "artworks/organizations/ewupc-updated.webp",
+    "light": false,
+    "artworks": [
+      "artworks/organizations/ewupc/selected-work/work-01.webp",
+      "artworks/organizations/ewupc/selected-work/work-02.webp"
+    ],
+    "timeline": [
+      {
+        "date": "Joined as Designer",
+        "title": "Club design work",
+        "text": "Creating posters and visual content for the photography club."
+      }
+    ]
+  }
+]

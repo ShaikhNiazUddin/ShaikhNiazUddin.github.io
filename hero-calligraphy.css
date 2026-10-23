@@ -1,0 +1,34 @@
+.hero-stage{isolation:isolate;--hero-fold:0;--hero-ring-scale:1;--hero-ring-turn:0deg;--hero-left-x:0px;--hero-right-x:0px}
+.hero-calligraphy{position:absolute;z-index:0;width:calc(var(--h) * .91);height:calc(var(--h) * .91);left:50%;top:50%;translate:-50% -50%;transform:translateX(calc(var(--head-w) * .06)) rotate(var(--hero-ring-turn)) scale(var(--hero-ring-scale));pointer-events:none;opacity:calc(1 - var(--hero-fold) * .72);will-change:transform}
+.hero-calligraphy-spin{width:100%;height:100%;background:#CB2957;mask-image:var(--calligraphy-mask);-webkit-mask-image:var(--calligraphy-mask);mask-size:contain;-webkit-mask-size:contain;mask-position:center;-webkit-mask-position:center;mask-repeat:no-repeat;-webkit-mask-repeat:no-repeat;animation:hero-calligraphy-turn 65s linear infinite;visibility:hidden}
+.hero-stage.calligraphy-ready .hero-calligraphy-spin{visibility:visible}
+@keyframes hero-calligraphy-turn{to{transform:rotate(360deg)}}
+.hero-glass{position:absolute;z-index:1;left:50%;top:50%;width:100vw;height:110svh;translate:-50% -50%;pointer-events:none;background:radial-gradient(ellipse at center,rgba(255,255,255,.018),rgba(0,0,0,.15) 65%);backdrop-filter:blur(1.5px);-webkit-backdrop-filter:blur(1.5px);mask-image:radial-gradient(ellipse,#000 45%,transparent 78%)}
+.hero-glass::after{content:'';position:absolute;inset:0;opacity:.075;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23fff' filter='url(%23n)' d='M0 0h180v180H0z'/%3E%3C/svg%3E")}
+.hero-stage .hero-name{z-index:2}
+.hero-stage .head-wrap{z-index:3}
+.hero-name .lcol{translate:var(--hero-left-x) 0;scale:calc(1 - var(--hero-fold) * .38);opacity:calc(1 - var(--hero-fold));transform-origin:right center;will-change:translate,scale,opacity}
+.hero-name .rcol{translate:var(--hero-right-x) 0;scale:calc(1 - var(--hero-fold) * .38);opacity:calc(1 - var(--hero-fold));transform-origin:left center;will-change:translate,scale,opacity}
+@media(prefers-reduced-motion:reduce){.hero-calligraphy-spin{animation:none}.hero-calligraphy{transform:translateX(calc(var(--head-w) * .06))}.hero-name .lcol,.hero-name .rcol{translate:none;scale:1;opacity:1;will-change:auto}}
+
+/* Reserve the folded opening state before scripts paint the first animation frame. */
+html.hero-motion-ready .hero-stage{--hero-fold:1;--hero-ring-scale:.3;--hero-left-x:calc(var(--h) * .36);--hero-right-x:calc(var(--h) * -.34)}
+@media(prefers-reduced-motion:reduce){html.hero-motion-ready .hero-stage{--hero-fold:0;--hero-ring-scale:1}}
+/* Center the full hero composition as one balanced group. */
+.hero-landing{display:grid;grid-template-rows:minmax(0,1fr) auto;padding-top:76px;padding-bottom:24px;min-height:100svh}
+.hero-landing>div:first-child{width:100%;height:100%;margin:0!important;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.hero-stage{margin-left:auto;margin-right:auto;flex-shrink:0}
+.hero-calligraphy{transform:rotate(var(--hero-ring-turn)) scale(var(--hero-ring-scale))}
+.hero-stage .head-wrap{transform:translate3d(var(--hx,0px),var(--hy,0px),0)}
+.hero-landing>.overflow-hidden{margin-top:24px}
+@media(max-width:650px){.hero-landing{padding-top:68px;padding-bottom:20px}.hero-landing>div:first-child{min-height:calc(100svh - 160px)}}
+@media(prefers-reduced-motion:reduce){.hero-calligraphy{transform:none}}
+/* Tuck the inner letters behind the portrait, as in the reference. */
+.hero-name .lcol{right:calc(50% + var(--head-w) * .25)}
+.hero-name .lcol .ln:first-child{transform:none}
+.hero-name .rcol{left:calc(50% + var(--head-w) * .32)}
+/* Reveal more of the h and N alongside the portrait. */
+.hero-name .lcol{right:calc(50% + var(--head-w) * .32)}
+.hero-name .rcol{left:calc(50% + var(--head-w) * .40)}
+/* Balance Niaz against the portrait while retaining a readable N. */
+.hero-name .rcol{left:calc(50% + var(--head-w) * .35)}

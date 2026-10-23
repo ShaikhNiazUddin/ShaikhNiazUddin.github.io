@@ -1,0 +1,6 @@
+.page-back-top{position:fixed;right:32px;bottom:24px;z-index:1000;display:flex;align-items:center;justify-content:center;width:48px;height:48px;padding:0;border-radius:50%;border:1px solid #CB2957;background:rgba(15,15,15,.92);color:#eee;font:28px/1 Arial,sans-serif;box-shadow:0 8px 24px #0008;backdrop-filter:blur(8px);cursor:pointer;transition:background .2s,transform .2s}
+.page-back-top[hidden]{display:none}
+.page-back-top:hover{background:#CB2957;color:#fff;transform:translateY(-3px)}
+.page-back-top:focus-visible{outline:2px solid #CB2957;outline-offset:4px}
+@media(max-width:650px){.page-back-top{right:20px;bottom:24px}}
+@media(prefers-reduced-motion:reduce){.page-back-top{transition:none}.page-back-top:hover{transform:none}}

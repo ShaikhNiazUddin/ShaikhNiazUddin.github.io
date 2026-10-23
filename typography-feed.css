@@ -1,0 +1,72 @@
+.typography-masonry{columns:5;column-gap:18px;padding:12px clamp(18px,3vw,48px) 64px}
+.type-artwork{display:block;width:100%;height:auto;padding:0;margin:0 0 18px;border:0;border-radius:12px;background:#111;break-inside:avoid;overflow:hidden;position:relative;text-align:initial;transition:transform .35s cubic-bezier(.2,1,.3,1),box-shadow .3s;cursor:zoom-in}
+.type-artwork img{display:block;width:100%;height:auto;transition:filter .3s,transform .5s cubic-bezier(.2,1,.3,1)}
+.type-artwork:hover{transform:translateY(-3px);box-shadow:0 8px 30px #0008}
+.type-artwork:hover img{filter:brightness(.85);transform:scale(1.025)}
+.type-artwork:focus-visible{outline:2px solid #CB2957;outline-offset:4px}
+.typography-feed header{padding-bottom:32px}
+@media(min-width:1800px){.typography-masonry{columns:6}}
+@media(max-width:1250px){.typography-masonry{columns:4}}
+@media(max-width:950px){.typography-masonry{columns:3}}
+@media(max-width:650px){.typography-masonry{columns:2;column-gap:12px;padding-left:14px;padding-right:14px}.type-artwork{margin-bottom:12px;border-radius:8px}}
+@media(max-width:360px){.typography-masonry{columns:1}}
+@media(prefers-reduced-motion:reduce){.type-artwork,.type-artwork img{transition:none}.type-artwork:hover,.type-artwork:hover img{transform:none}}
+
+/* Balanced, row-wise masonry keeps contrasting backgrounds mixed across the feed. */
+.typography-masonry{columns:unset;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));grid-auto-rows:8px;gap:16px;align-items:start}
+.typography-masonry .type-artwork{margin:0;align-self:start;min-width:0}
+@media(min-width:1800px){.typography-masonry{columns:unset;grid-template-columns:repeat(6,minmax(0,1fr))}}
+@media(max-width:1250px){.typography-masonry{columns:unset;grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:950px){.typography-masonry{columns:unset;grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:650px){.typography-masonry{columns:unset;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}
+@media(max-width:360px){.typography-masonry{columns:unset;grid-template-columns:1fr}}
+/* Give the wide lettering artwork more room. */
+.typography-masonry .type-artwork-wide{grid-column:span 2}
+@media(max-width:360px){.typography-masonry .type-artwork-wide{grid-column:span 1}}
+/* Alternating continuous vertical artwork columns. */
+.typography-masonry{--feed-columns:5;display:grid;grid-template-columns:repeat(var(--feed-columns),minmax(0,1fr));grid-auto-rows:auto;gap:18px;align-items:start;padding-bottom:40px}
+.flow-column{height:calc(100svh - 180px);min-height:520px;overflow:hidden;min-width:0;mask-image:linear-gradient(transparent,#000 3%,#000 97%,transparent)}
+.flow-column-wide{grid-column:span 2}
+.flow-track{animation:feed-rise 80s linear infinite;will-change:transform}
+.flow-track.flow-down{animation-direction:reverse}
+.flow-run{display:flex;flex-direction:column;gap:18px;padding-bottom:18px}
+.typography-masonry .flow-run .type-artwork{flex:none;grid-column:auto;margin:0;width:100%}
+.flow-column:hover .flow-track,.flow-column:focus-within .flow-track{animation-play-state:paused}
+@keyframes feed-rise{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+@media(min-width:1800px){.typography-masonry{--feed-columns:6;grid-template-columns:repeat(var(--feed-columns),minmax(0,1fr))}}
+@media(max-width:1250px){.typography-masonry{--feed-columns:4;grid-template-columns:repeat(var(--feed-columns),minmax(0,1fr))}}
+@media(max-width:950px){.typography-masonry{--feed-columns:3;grid-template-columns:repeat(var(--feed-columns),minmax(0,1fr))}}
+@media(max-width:650px){.typography-masonry{--feed-columns:2;grid-template-columns:repeat(var(--feed-columns),minmax(0,1fr));gap:12px}.flow-run{gap:12px;padding-bottom:12px}}
+@media(max-width:360px){.typography-masonry{--feed-columns:1;grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.flow-track{animation:none;transform:none;will-change:auto}.flow-column{height:auto;min-height:0;overflow:visible;mask-image:none}.flow-copy{display:none}}
+/* Five equally sized artwork columns on desktop. */
+@media(min-width:951px){.typography-masonry{--feed-columns:5;grid-template-columns:repeat(5,minmax(0,1fr))}}
+.flow-column-wide{grid-column:auto}
+/* A scrollable page with a taller window into the continuously looping feed. */
+body.typography-feed{overflow-y:auto;min-height:100svh}
+.typography-feed .flow-column{height:180svh;min-height:1100px}
+.typography-feed .flow-column:hover .flow-track,
+.typography-feed .flow-column:focus-within .flow-track{animation-play-state:running}
+@media(max-width:650px){.typography-feed .flow-column{height:200svh;min-height:1000px}}
+@media(prefers-reduced-motion:reduce){.typography-feed .flow-column{height:auto;min-height:0}}
+/* Each column exposes its whole collection; the page scrolls to its full height. */
+.typography-feed .flow-column{min-height:0}
+@media(max-width:650px){.typography-feed .flow-column{min-height:0}}
+@media(prefers-reduced-motion:reduce){.typography-feed .flow-column{height:auto!important}}
+/* Repeated runs replace artwork at both edges without a fade or empty interval. */
+.typography-feed .flow-column{mask-image:none;-webkit-mask-image:none}
+.typography-feed .flow-track{animation-name:feed-continuous-wrap}
+@keyframes feed-continuous-wrap{
+    from{transform:translateY(calc(-1 * var(--loop-distance, 0px)))}
+    to{transform:translateY(calc(-2 * var(--loop-distance, 0px)))}
+}
+@media(prefers-reduced-motion:reduce){.typography-feed .flow-track{animation:none;transform:none}}
+/* One shared ending for the animated feed. */
+.typography-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;margin:0 clamp(18px,3vw,48px);padding:32px 0 44px;border-top:1px solid #292929;color:#888;font-size:14px}
+.typography-footer a{color:#aaa;text-decoration:none}
+.typography-footer a:hover{color:#CB2957}
+/* One complete collection only, with clipped edge continuations during wrapping. */
+.typography-feed .unique-flow-column{position:relative;overflow:hidden;min-height:0;mask-image:none}
+.typography-masonry .unique-flow-column>.type-artwork{position:absolute;top:0;left:0;width:100%;margin:0;transition:box-shadow .3s;will-change:transform}
+.flow-edge-piece{display:none}
+@media(prefers-reduced-motion:reduce){.typography-masonry .unique-flow-column>.type-artwork{will-change:auto}}

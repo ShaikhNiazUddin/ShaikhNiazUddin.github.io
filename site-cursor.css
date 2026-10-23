@@ -1,0 +1,12 @@
+.site-cursor-dot,.site-cursor-ring{position:fixed;left:0;top:0;z-index:10001;pointer-events:none;border-radius:9999px;opacity:0;will-change:transform;transition:opacity .25s}
+.site-cursor-dot{width:8px;height:8px;margin:-4px 0 0 -4px;background:#CB2957}
+.site-cursor-ring{width:40px;height:40px;margin:-20px 0 0 -20px;border:1.5px solid rgba(238,238,238,.55)}
+.site-cursor-ring i{position:absolute;inset:-1.5px;border-radius:inherit;display:block;background:rgba(203,41,87,.18);border:1.5px solid #CB2957;opacity:0;transform:scale(var(--rs,1));transition:opacity .25s,transform .3s cubic-bezier(.16,1,.3,1)}
+html.site-has-cursor,html.site-has-cursor *{cursor:none!important}
+html.site-cursor-on .site-cursor-dot,html.site-cursor-on .site-cursor-ring{opacity:1}
+html.site-cursor-link .site-cursor-ring i{opacity:1;--rs:1.55}
+html.site-cursor-link .site-cursor-dot{opacity:0}
+html.site-cursor-down .site-cursor-ring i{--rs:.8}
+.site-click-ripple{position:fixed;width:12px;height:12px;margin:-6px;border:1.5px solid #CB2957;border-radius:50%;pointer-events:none;z-index:10000;animation:site-click-ripple .45s ease-out forwards}
+@keyframes site-click-ripple{from{transform:scale(.5);opacity:.9}to{transform:scale(2);opacity:0}}
+@media(prefers-reduced-motion:reduce){.site-cursor-dot,.site-cursor-ring,.site-cursor-ring i{transition:none}.site-click-ripple{animation:none;opacity:.65}}

@@ -1,0 +1,5 @@
+Asset preparation: built-in image_gen tool.
+Inputs: the three user-supplied chair/lamp, television/table, and bookshelf illustrations.
+Prompt used for each: Remove ONLY the exterior white background and empty white spaces outside the object silhouettes, making them truly transparent. Preserve all enclosed white object interiors, pink outlines, black details, exact layout and flat illustration style. Keep complete objects uncropped with minimal transparent margin. No new elements.
+Outputs: chair-lamp.png, tv.png, bookshelf.png.
+Correction: bookshelf-v2.png replaces the damaged first bookshelf cutout. Built-in image_gen prompt: Precisely extract the supplied original bookshelf. Preserve all solid pink backing panels fully opaque, all white books, frame and bowl. Transparency only outside the silhouette. No black stains, dark marks, or holes in panels. Preserve composition and shapes.

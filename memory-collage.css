@@ -1,0 +1,22 @@
+.home-welcome{padding:110px 6vw 15px;max-width:1200px;margin:auto}.home-welcome>span,.memory-section header>span{font:11px monospace;color:#CB2957;text-transform:uppercase;letter-spacing:.15em}.home-welcome h1{font-size:clamp(42px,7vw,100px);line-height:1;letter-spacing:-.065em;margin:20px 0}.music-room{min-height:0;padding:50px 0 110px}.track-info h2{font-size:clamp(22px,4vw,32px);font-weight:500;letter-spacing:-.04em;margin:0 0 6px}.band-link{display:inline-block;font-size:14px;color:#CB2957;text-decoration:none;margin-bottom:10px}.band-link:hover{color:white}.memory-section{padding:90px 6vw 130px;background:#CB2957;position:relative;overflow:hidden}.memory-section header{max-width:1120px;margin:0 auto 75px;color:#080808}.memory-section header>span{color:#f5f3ee}.memory-section h2{font-size:clamp(40px,6.5vw,88px);letter-spacing:-.065em;line-height:1;margin:20px 0}.memory-section header p{font-size:14px;max-width:450px;line-height:1.6}.memory-board{max-width:1120px;margin:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;isolation:isolate;padding:20px 15px 60px}.memory-photo{position:relative;align-self:center;display:block;width:108%;padding:9px 9px 26px;background:#f5f3ee;border:0;box-shadow:0 9px 20px #0005;transform:translate(var(--dx,0px),var(--dy,0px)) rotate(var(--tilt));transition:box-shadow .25s,scale .25s;cursor:grab;touch-action:none;margin:-15px 0}.memory-photo:nth-child(3n+2){margin-top:70px}.memory-photo img{display:block;width:100%;height:clamp(180px,25vw,340px);object-fit:cover;pointer-events:none}.memory-photo:nth-child(4n) img{height:clamp(210px,30vw,400px)}.memory-number{position:absolute;bottom:7px;right:12px;font:10px monospace;color:#444}.memory-photo:hover,.memory-photo:focus-visible{z-index:20;scale:1.035;box-shadow:0 18px 36px #0007;outline:2px solid #080808}.memory-photo.dragging{cursor:grabbing;scale:1.05;z-index:30}.memory-lightbox{border:0;background:transparent;padding:0;max-width:92vw;max-height:92svh;overflow:visible}.memory-lightbox::backdrop{background:#000e;backdrop-filter:blur(8px)}.memory-lightbox>img{display:block;max-width:90vw;max-height:85svh;object-fit:contain}.memory-close{position:absolute;top:8px;right:8px;border:0;border-radius:50%;width:40px;height:40px;background:#080808;color:#fff;font-size:27px;cursor:pointer}@media(max-width:650px){.home-welcome{padding-top:100px}.music-room{padding-bottom:70px}.memory-section{padding:70px 5vw 90px}.memory-board{grid-template-columns:repeat(2,minmax(0,1fr));padding:0 8px 30px}.memory-photo{width:105%;padding:6px 6px 23px}.memory-photo:nth-child(3n+2){margin-top:0}.memory-photo:nth-child(2n){margin-top:45px}.memory-photo img,.memory-photo:nth-child(4n) img{height:210px}}@media(prefers-reduced-motion:reduce){.memory-photo{transition:none}}
+/* Preserve every photograph's original aspect ratio in the collage. */
+.memory-photo img,.memory-photo:nth-child(4n) img{height:auto;object-fit:contain}
+/* Match the rest of the page's black background. */
+.memory-section{background:#080808}
+.memory-section header{color:#f5f3ee}
+.memory-section header>span{color:#CB2957}
+.memory-section header p{color:#999}
+.home-intro{min-height:100svh}
+@font-face{font-family:'Ekush';src:url('fonts/Ekush-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+#memory-title[lang=bn]{font-family:'Ekush',sans-serif;font-weight:400;letter-spacing:0;line-height:1.35;margin-bottom:4px}
+.memory-section header .memory-subtitle{margin-top:0}
+.memory-section header .memory-subtitle{font-family:'Noto Sans Bengali',sans-serif;font-size:clamp(8px,1.3vw,17.6px);font-weight:400;max-width:none;line-height:1.6}
+/* Keep the complete welcome and record player within one viewport. */
+.home-intro{display:flex;flex-direction:column;justify-content:center;gap:22px;padding:70px 6vw 30px}
+.home-intro .home-welcome{padding:0;width:min(1120px,100%);margin:0 auto}
+.home-intro .home-welcome h1{font-size:clamp(34px,6vw,76px);margin:12px 0 0}
+.home-intro .music-room{min-height:0;width:min(660px,100%);padding:0;margin:0 auto}
+.home-intro .turntable{width:min(100%,calc(max(180px,100svh - 340px) * 1.34694));margin:0 auto}
+.home-intro .track-info{margin-top:18px}
+.home-intro .arm-hint{margin-top:14px}
+@media(max-width:650px){.home-intro{padding:70px 6vw 25px;gap:20px}.home-intro .home-welcome h1{font-size:clamp(32px,8vw,48px)}.home-intro .turntable{width:min(100%,calc(max(150px,100svh - 320px) * 1.34694))}.home-intro .track-info h2{font-size:24px}.home-intro .arm-hint{font-size:10px}}

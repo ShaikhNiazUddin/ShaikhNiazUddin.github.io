@@ -1,0 +1,80 @@
+.logo-project-grid{padding:20px clamp(24px,4vw,64px) 80px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 28px}
+.logo-project-card{color:#eee;text-decoration:none;display:block}
+.logo-thumbnail{aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:#0c0c0c;overflow:hidden;border:1px solid #222;transition:border-color .3s,transform .4s cubic-bezier(.2,1,.3,1)}
+.logo-thumbnail img{width:76%;height:76%;object-fit:contain;filter:grayscale(1) contrast(1.5) invert(1);mix-blend-mode:screen;transition:transform .5s cubic-bezier(.2,1,.3,1)}
+.logo-project-card:hover .logo-thumbnail{border-color:#CB2957;transform:translateY(-4px)}
+.logo-project-card:hover img{transform:scale(1.04)}
+.card-caption{font-family:'Bitcount Single',monospace;font-size:16px;line-height:1.5;display:flex;justify-content:space-between;gap:14px;padding-top:16px;color:#aaa}
+.logo-project-card:hover .card-caption{color:#CB2957}
+.case-header-label,.case-eyebrow{font-family:'Bitcount Single',monospace;font-size:15px;letter-spacing:.04em;color:#CB2957}
+.case-header-label{color:#999}
+.case-container{max-width:1440px;margin:auto;padding:0 clamp(24px,5vw,80px)}
+.case-intro{padding:64px 0 48px}
+.case-intro h1{font-size:clamp(40px,6.5vw,88px);line-height:1.03;max-width:1100px;margin:20px 0 24px}
+.case-lead{font-size:clamp(20px,2.5vw,32px);line-height:1.4;color:#aaa;max-width:900px}
+.original-logo{margin:0 0 80px;background:#111}
+.original-logo>a{display:flex;justify-content:center;padding:clamp(20px,5vw,64px)}
+.original-logo img{max-width:100%;width:auto;max-height:72svh;object-fit:contain;display:block}
+.original-logo figcaption{display:flex;justify-content:space-between;gap:16px;padding:20px 24px;border-top:1px solid #292929;color:#999;font-family:'Bitcount Single',monospace}
+.original-logo a{color:inherit;text-decoration:none}
+.original-logo figcaption a:hover{color:#CB2957}
+.project-story{display:grid;grid-template-columns:1fr 1.5fr;gap:60px;padding:0 0 80px}
+.logo-case h2{font-size:clamp(28px,3vw,44px);letter-spacing:-.035em;line-height:1.1;margin:12px 0 28px}
+.project-story p:not(.case-eyebrow){font-size:18px;line-height:1.75;color:#aaa;margin-top:0;margin-bottom:24px}
+.project-points{list-style:none;padding:0;margin:32px 0 0;border-top:1px solid #292929}
+.project-points li{padding:14px 0;border-bottom:1px solid #292929;color:#ddd;font-size:16px}
+.process-section{padding:40px 0;border-top:1px solid #292929}
+.process-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;align-items:start;margin:40px 0}
+.process-slide{margin:0}.process-slide img{width:100%;height:auto;display:block}
+.process-slide figcaption{font-family:'Bitcount Single',monospace;font-size:14px;color:#777;padding-top:12px}
+.text-link{display:inline-block;color:#aaa;margin:20px 0}
+.case-bottom{border-top:1px solid #292929;display:flex;justify-content:space-between;gap:24px;padding:40px 0 64px;font-size:16px}
+.case-bottom a{color:#aaa;text-decoration:none}.case-bottom a:hover,.text-link:hover{color:#CB2957}
+@media(max-width:1000px){.logo-project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.project-story{grid-template-columns:1fr;gap:16px}}
+@media(max-width:600px){.logo-project-grid{grid-template-columns:1fr;gap:32px}.process-grid{grid-template-columns:1fr;gap:28px}.case-intro{padding-top:40px}.original-logo{margin-bottom:48px}.case-bottom{flex-direction:column}.original-logo figcaption{flex-wrap:wrap}.logo-case .gallery-logo{width:72px}}
+@media(prefers-reduced-motion:reduce){.logo-thumbnail,.logo-thumbnail img{transition:none}.logo-project-card:hover .logo-thumbnail,.logo-project-card:hover img{transform:none}}
+
+/* Increase contrast and brightness of the Mukto Pani thumbnail. */
+.logo-project-card[href="logo-mukto-pani.html"] .logo-thumbnail img{
+    filter:grayscale(1) contrast(1.5) invert(1) brightness(2.4);
+}
+/* Logo presentations read left to right, in a single ordered strip. */
+.process-grid{display:flex;gap:24px;overflow-x:auto;align-items:flex-start;scroll-snap-type:x proximity;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:#CB2957 #191919;padding:12px 0 24px;cursor:grab}
+.process-slide{flex:0 0 min(70vw,640px);scroll-snap-align:start}
+.process-slide img{width:100%;height:72svh;object-fit:contain;object-position:center;background:#101010;user-select:none;-webkit-user-drag:none}
+.process-grid.is-dragging{cursor:grabbing;scroll-snap-type:none;user-select:none}
+.process-grid:focus-visible{outline:2px solid #CB2957;outline-offset:6px}
+.presentation-hint{font-family:'Bitcount Single',monospace;color:#888;font-size:14px}
+@media(max-width:600px){.process-slide{flex-basis:85vw}.process-slide img{height:65svh}}
+/* A continuous edge-to-edge presentation, with equally visible slides. */
+.process-grid{gap:0;padding:0;margin-top:32px;scroll-snap-type:none;border:0;background:transparent;align-items:stretch}
+.process-slide{flex:0 0 auto;scroll-snap-align:none;opacity:1;filter:none;transform:none}
+.process-slide>a{display:block}
+.process-slide img{display:block;width:auto;max-width:none;height:72svh;object-fit:contain;background:transparent;border:0;border-radius:0;box-shadow:none}
+.process-slide figcaption{display:none}
+.original-logo{background:#0c0c0c}
+.original-logo img{filter:grayscale(1) contrast(1.5) invert(1);mix-blend-mode:screen}
+.original-logo img[src*="/mukto-pani/"]{filter:grayscale(1) contrast(1.5) invert(1) brightness(2.4)}
+@media(max-width:600px){.process-slide{flex-basis:auto}.process-slide img{height:65svh}}
+/* Interactive project story typography and detail rows. */
+.project-story h2{transform-origin:left center;transition:color .25s ease,transform .35s cubic-bezier(.2,1,.3,1)}
+.project-story h2:hover{color:#CB2957;transform:translateY(-2px) scale(1.025)}
+.project-story p:not(.case-eyebrow){transition:color .25s ease}
+.project-story p:not(.case-eyebrow):hover{color:#eee}
+.project-points li{transition:color .25s ease,padding-left .3s cubic-bezier(.2,1,.3,1),background-color .25s,border-color .25s}
+.project-points li:hover{color:#CB2957;padding-left:14px;background:rgba(203,41,87,.06);border-bottom-color:rgba(203,41,87,.45)}
+@media(prefers-reduced-motion:reduce){.project-story h2,.project-story p:not(.case-eyebrow),.project-points li{transition:none}.project-story h2:hover{transform:none}.project-points li:hover{padding-left:0}}
+/* Type the title, then reveal its supporting copy without layout shifts. */
+.typed-word{display:inline-block;white-space:nowrap}
+.intro-typing .typed-letter{visibility:hidden}
+.intro-typing .typed-letter.typed-visible{visibility:visible}
+.intro-typing .case-lead{opacity:0;translate:0 12px;transition:opacity .8s ease,translate .9s cubic-bezier(.2,1,.3,1),color .25s}
+.intro-typing.intro-complete .case-lead{opacity:1;translate:0 0}
+.case-intro h1{transform-origin:left center;transition:color .25s,transform .35s cubic-bezier(.2,1,.3,1)}
+.case-intro h1:hover{color:#CB2957;transform:translateY(-2px) scale(1.015)}
+.case-intro .case-lead:hover{color:#eee}
+@media(prefers-reduced-motion:reduce){.intro-typing .typed-letter{visibility:visible}.intro-typing .case-lead{opacity:1;translate:none;transition:none}.case-intro h1{transition:none}.case-intro h1:hover{transform:none}}
+/* Hide supporting copy before the first paint; animate only its reveal. */
+html.intro-ready .case-intro:not(.intro-complete) .case-lead{opacity:0;translate:0 12px;transition:none}
+html.intro-ready .case-intro.intro-complete .case-lead{opacity:1;translate:0 0;transition:opacity .8s ease,translate .9s cubic-bezier(.2,1,.3,1),color .25s}
+@media(prefers-reduced-motion:reduce){html.intro-ready .case-intro:not(.intro-complete) .case-lead{opacity:1;translate:none}}

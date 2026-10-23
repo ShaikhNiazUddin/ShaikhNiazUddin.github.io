@@ -1,0 +1,298 @@
+[
+  {
+    "id": 1,
+    "title": "Sketchbook 1",
+    "cover": "artworks/sketchbooks/book-1/00-v3.webp",
+    "pages": [
+      {
+        "src": "artworks/sketchbooks/book-1/01-edges-v5.webp",
+        "source": "IMG_20261023_033952278.jpg",
+        "width": 1874,
+        "height": 1289
+      },
+      {
+        "src": "artworks/sketchbooks/book-1/02-edges-v5.webp",
+        "source": "IMG_20261023_034000399.jpg",
+        "width": 1843,
+        "height": 1160
+      },
+      {
+        "src": "artworks/sketchbooks/book-1/03-edges-v5.webp",
+        "source": "IMG_20261023_034008611.jpg",
+        "width": 1874,
+        "height": 1288
+      },
+      {
+        "src": "artworks/sketchbooks/book-1/04-edges-v5.webp",
+        "source": "IMG_20261023_034028889.jpg",
+        "width": 1850,
+        "height": 1166
+      },
+      {
+        "src": "artworks/sketchbooks/book-1/05-edges-v5.webp",
+        "source": "IMG_20261023_034042323.jpg",
+        "width": 1861,
+        "height": 1253
+      },
+      {
+        "src": "artworks/sketchbooks/book-1/06-edges-v5.webp",
+        "source": "IMG_20261023_034103012.jpg",
+        "width": 1823,
+        "height": 1205
+      },
+      {
+        "src": "artworks/sketchbooks/book-1/07-edges-v5.webp",
+        "source": "IMG_20261023_034111273.jpg",
+        "width": 1850,
+        "height": 1238
+      },
+      {
+        "src": "artworks/sketchbooks/book-1/08-edges-v5.webp",
+        "source": "IMG_20261023_034137360.jpg",
+        "width": 1812,
+        "height": 1186
+      },
+      {
+        "src": "artworks/sketchbooks/book-1/10-edges-v5.webp",
+        "source": "IMG_20261023_034151548.jpg",
+        "width": 1863,
+        "height": 1234
+      },
+      {
+        "src": "artworks/sketchbooks/book-1/11-edges-v5.webp",
+        "source": "IMG_20261023_034202113.jpg",
+        "width": 1850,
+        "height": 1281
+      },
+      {
+        "src": "artworks/sketchbooks/book-1/13-edges-v5.webp",
+        "source": "IMG_20261023_034230030.jpg",
+        "width": 1828,
+        "height": 1358
+      },
+      {
+        "src": "artworks/sketchbooks/book-1/14-edges-v5.webp",
+        "source": "IMG_20261023_034239753.jpg",
+        "width": 1815,
+        "height": 1231
+      },
+      {
+        "src": "artworks/sketchbooks/book-1/15-edges-v5.webp",
+        "source": "IMG_20261023_034256046.jpg",
+        "width": 1819,
+        "height": 1298
+      },
+      {
+        "src": "artworks/sketchbooks/book-1/16-edges-v5.webp",
+        "source": "IMG_20261023_034340549.jpg",
+        "width": 1862,
+        "height": 1263
+      },
+      {
+        "src": "artworks/sketchbooks/book-1/17-edges-v5.webp",
+        "source": "IMG_20261023_034411845.jpg",
+        "width": 1864,
+        "height": 1269
+      },
+      {
+        "src": "artworks/sketchbooks/book-1/18-edges-v5.webp",
+        "source": "IMG_20261023_034423224.jpg",
+        "width": 1851,
+        "height": 1275
+      },
+      {
+        "src": "artworks/sketchbooks/book-1/19-edges-v5.webp",
+        "source": "IMG_20261023_034428362.jpg",
+        "width": 995,
+        "height": 1320
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Sketchbook 2",
+    "cover": "artworks/sketchbooks/book-2/00-v4.webp",
+    "pages": [
+      {
+        "src": "artworks/sketchbooks/book-2/01-edges-v5.webp",
+        "source": "IMG_20261023_033457057.jpg",
+        "width": 1865,
+        "height": 1234
+      },
+      {
+        "src": "artworks/sketchbooks/book-2/02-edges-v5.webp",
+        "source": "IMG_20261023_033503389.jpg",
+        "width": 1860,
+        "height": 1227
+      },
+      {
+        "src": "artworks/sketchbooks/book-2/03-edges-v5.webp",
+        "source": "IMG_20261023_033509267.jpg",
+        "width": 1865,
+        "height": 1229
+      },
+      {
+        "src": "artworks/sketchbooks/book-2/04-edges-v5.webp",
+        "source": "IMG_20261023_033514517.jpg",
+        "width": 1865,
+        "height": 1204
+      },
+      {
+        "src": "artworks/sketchbooks/book-2/05-edges-v5.webp",
+        "source": "IMG_20261023_033518822.webp",
+        "width": 1853,
+        "height": 1214
+      },
+      {
+        "src": "artworks/sketchbooks/book-2/06-edges-v5.webp",
+        "source": "IMG_20261023_033532009.jpg",
+        "width": 1866,
+        "height": 1241
+      },
+      {
+        "src": "artworks/sketchbooks/book-2/07-edges-v5.webp",
+        "source": "IMG_20261023_033537788.jpg",
+        "width": 1863,
+        "height": 1243
+      },
+      {
+        "src": "artworks/sketchbooks/book-2/08-edges-v5.webp",
+        "source": "IMG_20261023_033544410.jpg",
+        "width": 1868,
+        "height": 1235
+      },
+      {
+        "src": "artworks/sketchbooks/book-2/09-edges-v5.webp",
+        "source": "IMG_20261023_033549850.jpg",
+        "width": 1868,
+        "height": 1284
+      },
+      {
+        "src": "artworks/sketchbooks/book-2/11-edges-v5.webp",
+        "source": "IMG_20261023_033557435.jpg",
+        "width": 1863,
+        "height": 1234
+      },
+      {
+        "src": "artworks/sketchbooks/book-2/12-edges-v5.webp",
+        "source": "IMG_20261023_033602133.jpg",
+        "width": 1858,
+        "height": 1227
+      },
+      {
+        "src": "artworks/sketchbooks/book-2/13-edges-v5.webp",
+        "source": "IMG_20261023_033611682.jpg",
+        "width": 1857,
+        "height": 1237
+      },
+      {
+        "src": "artworks/sketchbooks/book-2/14-edges-v5.webp",
+        "source": "IMG_20261023_033616253.jpg",
+        "width": 1866,
+        "height": 1241
+      },
+      {
+        "src": "artworks/sketchbooks/book-2/15-edges-v5.webp",
+        "source": "IMG_20261023_033621444.jpg",
+        "width": 1858,
+        "height": 1236
+      },
+      {
+        "src": "artworks/sketchbooks/book-2/16-edges-v5.webp",
+        "source": "IMG_20261023_033627671.jpg",
+        "width": 1857,
+        "height": 1235
+      },
+      {
+        "src": "artworks/sketchbooks/book-2/17-edges-v5.webp",
+        "source": "IMG_20261023_033632745.jpg",
+        "width": 1862,
+        "height": 1251
+      },
+      {
+        "src": "artworks/sketchbooks/book-2/18-edges-v5.webp",
+        "source": "IMG_20261023_033637333.jpg",
+        "width": 1854,
+        "height": 1257
+      },
+      {
+        "src": "artworks/sketchbooks/book-2/19-edges-v5.webp",
+        "source": "IMG_20261023_033641534.jpg",
+        "width": 1858,
+        "height": 1230
+      },
+      {
+        "src": "artworks/sketchbooks/book-2/20-edges-v5.webp",
+        "source": "IMG_20261023_033654240.jpg",
+        "width": 1861,
+        "height": 1240
+      },
+      {
+        "src": "artworks/sketchbooks/book-2/21-edges-v5.webp",
+        "source": "IMG_20261023_033707824.jpg",
+        "width": 1850,
+        "height": 1227
+      },
+      {
+        "src": "artworks/sketchbooks/book-2/23-edges-v5.webp",
+        "source": "IMG_20261023_033715067.jpg",
+        "width": 1849,
+        "height": 1233
+      },
+      {
+        "src": "artworks/sketchbooks/book-2/24-edges-v5.webp",
+        "source": "IMG_20261023_033728885.jpg",
+        "width": 1874,
+        "height": 1250
+      },
+      {
+        "src": "artworks/sketchbooks/book-2/25-edges-v5.webp",
+        "source": "IMG_20261023_033736993.jpg",
+        "width": 1865,
+        "height": 1249
+      },
+      {
+        "src": "artworks/sketchbooks/book-2/26-edges-v5.webp",
+        "source": "IMG_20261023_033746094.jpg",
+        "width": 1854,
+        "height": 1236
+      },
+      {
+        "src": "artworks/sketchbooks/book-2/27-edges-v5.webp",
+        "source": "IMG_20261023_033751624.jpg",
+        "width": 1862,
+        "height": 1240
+      },
+      {
+        "src": "artworks/sketchbooks/book-2/28-edges-v5.webp",
+        "source": "IMG_20261023_033757920.jpg",
+        "width": 1850,
+        "height": 1233
+      },
+      {
+        "src": "artworks/sketchbooks/book-2/29-edges-v5.webp",
+        "source": "IMG_20261023_033803941.jpg",
+        "width": 1859,
+        "height": 1236
+      },
+      {
+        "src": "artworks/sketchbooks/book-2/30-edges-v5.webp",
+        "source": "IMG_20261023_033812806.jpg",
+        "width": 1858,
+        "height": 1207
+      },
+      {
+        "src": "artworks/sketchbooks/book-2/31-right-clean-v6.webp",
+        "source": "IMG_20261023_033827378.jpg",
+        "width": 1806,
+        "height": 1221
+      },
+      {
+        "src": "artworks/sketchbooks/book-2/32-edges-v5.webp",
+        "source": "IMG_20261023_033837931.jpg",
+        "width": 1100,
+        "height": 1403
+      }
+    ]
+  }
+]

@@ -1,0 +1,87 @@
+#work.organization-work{width:100%;max-width:none;padding:88px 0 80px;display:block;background:#000}
+#work.organization-work>:first-child{margin-bottom:36px}
+.org-inner{max-width:1280px;margin:auto;padding:0 clamp(24px,4vw,56px)}
+.org-eyebrow,.org-card-role,.org-group-heading>span,.org-panel-kicker{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#888}
+.org-eyebrow{color:#CB2957}.org-section-heading h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(32px,4vw,58px);letter-spacing:-.04em;line-height:1.1;margin-top:18px;color:#eee}
+.org-marquee{width:100%;overflow:hidden;border-top:1px solid #222;border-bottom:1px solid #222;margin-bottom:64px}
+.org-marquee-track{display:flex;width:max-content;animation:org-marquee 55s linear infinite}
+.org-marquee-run{display:flex;align-items:center;gap:48px;padding:18px 24px}
+.org-strip-item{display:flex;align-items:center;gap:14px;flex:none;white-space:nowrap;color:#888;font-size:12px}
+.org-strip-item .org-logo{width:54px;height:54px}
+.org-logo{object-fit:contain;filter:grayscale(1) contrast(1.5);mix-blend-mode:screen}
+.org-logo.org-logo-invert{filter:grayscale(1) contrast(1.5) invert(1)}
+@keyframes org-marquee{to{transform:translateX(-50%)}}
+.org-marquee:hover .org-marquee-track{animation-play-state:paused}
+.org-group-heading{display:flex;justify-content:space-between;align-items:baseline;gap:24px;margin:40px 0 24px}
+.org-group-heading h3{font-size:clamp(24px,2.8vw,36px);font-family:'Space Grotesk',sans-serif;font-weight:600;letter-spacing:-.03em;color:#eee}
+.org-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.org-card{position:relative;background:#080808;border:1px solid #252525;border-radius:12px;padding:28px;text-align:left;color:#eee;display:flex;flex-direction:column;align-items:flex-start;transition:border-color .3s,transform .35s,background .3s}
+.org-card:hover{border-color:#CB2957;background:#10080a;transform:translateY(-4px)}
+.org-card-logo{height:110px;width:100%;display:flex;align-items:center;justify-content:flex-start;margin-bottom:28px}
+.org-card-logo .org-logo{height:100%;max-width:160px;width:100%}
+.org-card-title{font-family:'Space Grotesk',sans-serif;font-size:20px;line-height:1.25;font-weight:600;margin-bottom:10px}
+.org-card-arrow{position:absolute;right:22px;top:20px;font-size:22px;color:#777}.org-card:hover .org-card-arrow{color:#CB2957}
+.org-panel[hidden]{display:none}
+.org-panel{position:fixed;inset:0;z-index:9998;background:#000b;backdrop-filter:blur(14px);display:flex;justify-content:flex-end}
+.org-panel-content{position:relative;width:min(860px,100%);height:100%;overflow-y:auto;overscroll-behavior:contain;background:#080808;border-left:1px solid #292929;padding:clamp(28px,5vw,64px);animation:org-panel-in .45s cubic-bezier(.2,1,.3,1)}
+.org-panel-close{position:absolute;right:24px;top:20px;border:1px solid #444;border-radius:50%;width:42px;height:42px;color:#fff;background:#141414;font-size:28px}
+.org-panel-brand{height:120px;width:180px;object-fit:contain;margin:24px 0 36px}
+.org-panel-content h2{font:600 clamp(30px,4vw,50px)/1.1 'Space Grotesk',sans-serif;letter-spacing:-.04em;margin:12px 0 24px;color:#eee}
+.org-panel-description{font-size:18px;line-height:1.7;color:#aaa;margin-bottom:32px}
+.org-panel-work{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:20px}
+.org-panel-work img{width:100%;height:auto;display:block;background:#111}
+.org-panel-link{display:inline-block;margin-top:24px;color:#CB2957}.org-panel-note{color:#777;font-size:15px;margin:24px 0}
+@keyframes org-panel-in{from{transform:translateX(50px);opacity:0}to{transform:none;opacity:1}}
+@media(max-width:900px){.org-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.org-card-grid{grid-template-columns:1fr}.org-group-heading{align-items:flex-start;flex-direction:column;gap:8px}.org-card-logo{height:90px}.org-panel-work{grid-template-columns:1fr}.org-strip-item span{max-width:180px;white-space:normal}}
+@media(prefers-reduced-motion:reduce){.org-marquee-track{animation:none}.org-card{transition:none}.org-card:hover{transform:none}.org-panel-content{animation:none}}
+
+/* Original-colour organization marks, with consistent contained sizing. */
+#work .org-logo,#org-panel .org-logo,
+#work .org-logo.org-logo-invert,#org-panel .org-logo.org-logo-invert{filter:none;mix-blend-mode:normal}
+.org-strip-item .org-logo{width:60px;height:60px;object-fit:contain;border-radius:4px}
+.org-card-logo{height:112px;align-items:center}
+.org-card-logo .org-logo{width:148px;height:100px;max-width:100%;object-fit:contain;object-position:left center;border-radius:4px}
+.org-panel-brand{object-position:left center}
+/* Photography club artwork supplied on black: blend only its backdrop away. */
+#work .org-logo[src*="ewupc-updated"],#org-panel .org-logo[src*="ewupc-updated"]{mix-blend-mode:screen}
+/* Logo-only marquee with restrained crimson separators. */
+.org-strip-item{gap:40px}
+.org-strip-item .org-strip-dot{color:#CB2957;font-size:14px;line-height:1}
+.org-marquee-run{gap:40px;padding:18px 20px}
+@media(max-width:560px){.org-strip-item .org-strip-dot{white-space:nowrap}}
+.org-card-period{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:#bbb;margin-top:16px}
+.org-card-period::before{content:'';width:5px;height:5px;border-radius:50%;background:#CB2957}
+.org-timeline{list-style:none;margin:20px 0 36px;padding:0 0 0 24px;border-left:1px solid rgba(255,255,255,.15)}
+.org-timeline li{position:relative;padding-bottom:28px}
+.org-timeline li:last-child{padding-bottom:0}
+.org-timeline li::before{content:'';position:absolute;left:-29px;top:6px;width:9px;height:9px;border-radius:50%;background:#CB2957;box-shadow:0 0 0 4px rgba(203,41,87,.1)}
+.org-timeline-date{font-family:'JetBrains Mono',monospace;color:#CB2957;font-size:12px}
+.org-timeline h3{font-size:20px;color:#eee;margin:8px 0}
+.org-timeline p{font-size:15px;color:#999;line-height:1.6;margin:0}/* Brand palette at rest; original artwork colours on hover or keyboard focus. */
+#work .org-logo,#work .org-logo.org-logo-invert{filter:url(#org-brand-tones);transition:filter .3s ease}
+#work .org-card:hover .org-logo,#work .org-card:focus-visible .org-logo,
+#work .org-strip-item:hover .org-logo{filter:none}
+@media(prefers-reduced-motion:reduce){#work .org-logo{transition:none}}
+/* Use two-colour styling unless a logo needs a third brand tone. */
+#work .org-logo,#work .org-logo.org-logo-invert{filter:grayscale(1) contrast(1.6)}
+#work .org-logo[src*="honeycomb-original"]{filter:url(#org-brand-tones)}
+#work .org-card:hover .org-logo,#work .org-card:focus-visible .org-logo,
+#work .org-strip-item:hover .org-logo{filter:none}
+/* Draw a geometrically centered close icon, independent of font metrics. */
+.org-panel-close{display:grid;place-items:center;padding:0;line-height:1;font-size:0}
+.org-panel-close::before,.org-panel-close::after{content:"";position:absolute;left:50%;top:50%;width:16px;height:2px;background:#fff;border-radius:2px;transform:translate(-50%,-50%) rotate(45deg)}
+.org-panel-close::after{transform:translate(-50%,-50%) rotate(-45deg)}
+#org-panel.org-tahams-gallery .org-panel-content{width:min(1200px,100%)}
+#org-panel .tahams-gallery{display:flex;align-items:center;gap:24px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;scroll-snap-type:none;padding:25px 12px 45px;cursor:grab;touch-action:none;overflow-anchor:none;margin:0 -12px}
+#org-panel .tahams-gallery::-webkit-scrollbar{display:none}
+#org-panel .tahams-gallery.dragging{cursor:grabbing;user-select:none}
+#org-panel .tahams-gallery .artwork{margin:0;flex:0 0 clamp(230px,33vw,420px);opacity:.42;transform:scale(.92);filter:saturate(.6);transition:opacity .4s,transform .5s,filter .4s;cursor:zoom-in}
+#org-panel .tahams-gallery .artwork.is-center{opacity:1;transform:scale(1.025);filter:none}
+#org-panel .tahams-gallery img{width:100%;height:clamp(320px,58svh,620px);object-fit:contain;background:transparent;display:block;user-select:none;-webkit-user-drag:none}
+.artwork-lightbox{position:fixed;inset:0;width:100vw;max-width:none;height:100svh;max-height:none;margin:0;padding:clamp(24px,4vw,64px);border:0;background:#000f;overflow:hidden;color:#fff}
+.artwork-lightbox[open]{display:flex;align-items:center;justify-content:center}.artwork-lightbox::backdrop{background:#000d}
+.lightbox-image{max-width:100%;max-height:100%;object-fit:contain}
+.lightbox-close{position:absolute;right:20px;top:16px;width:44px;height:44px;border:1px solid #555;border-radius:50%;background:#181818;color:#fff;font-size:30px;line-height:1;display:grid;place-items:center;padding:0}
+@media(max-width:650px){#org-panel .tahams-gallery .artwork{flex-basis:72vw}}
+@media(prefers-reduced-motion:reduce){#org-panel .tahams-gallery .artwork{transition:none}}
