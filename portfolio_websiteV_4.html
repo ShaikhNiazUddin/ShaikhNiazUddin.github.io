@@ -410,10 +410,10 @@
         }
         #about.about-scroll {
             width: 100%; max-width: none; margin: 0;
-            height: 240svh; padding: 0;
+            height: auto; min-height: 100svh; padding: 0;
         }
         .about-screen {
-            position: sticky; top: 0; min-height: 100svh;
+            position: relative; top: 0; min-height: 100svh;
             display: flex; align-items: center;
             padding: clamp(40px, 7vh, 80px) clamp(24px, 5vw, 88px);
         }
@@ -1100,23 +1100,30 @@
             }
             return { block, words };
         });
-        let pending = false;
-        function updateWords() {
-            pending = false;
-            const rect = about.getBoundingClientRect();
-            const pinned = getComputedStyle(about.querySelector('.about-screen')).position === 'sticky';
-            const progress = Math.max(0, Math.min(1, pinned
-                ? -rect.top / Math.max(1, about.offsetHeight - innerHeight) * 1.15
-                : (innerHeight * .85 - rect.top) / Math.max(1, rect.height * .8)));
-            const words = groups.flatMap(group => group.words);
+        const words = groups.flatMap(group => group.words);
+        words.forEach(word => word.style.setProperty('--word-light', '.2'));
+        let started = false;
+        const animations = [];
+        const aboutObserver = new IntersectionObserver(entries => {
+            if (started || !entries.some(entry => entry.isIntersecting)) return;
+            started = true;
+            aboutObserver.disconnect();
             words.forEach((word, index) => {
-                const light = Math.max(0, Math.min(1, (progress * (words.length + 3) - index) / 3));
-                word.style.setProperty('--word-light', reduced.matches ? 1 : (.16 + light * .84).toFixed(3));
+                word.style.setProperty('--word-light', '1');
+                animations.push(word.animate([
+                    { opacity: .2, textShadow: '0 0 0 transparent', offset: 0 },
+                    { opacity: 1, textShadow: '0 0 14px currentColor', offset: .6 },
+                    { opacity: 1, textShadow: '0 0 0 transparent', offset: 1 }
+                ], { duration: 600, delay: index * 65, easing: 'ease-out', fill: 'both' }));
             });
-        }
-        function requestUpdate() {
-            if (!pending) { pending = true; requestAnimationFrame(updateWords); }
-        }
+        }, { threshold: .2 });
+        aboutObserver.observe(about);
+        reduced.addEventListener('change', () => {
+            if (!reduced.matches) return;
+            aboutObserver.disconnect();
+            animations.forEach(animation => animation.cancel());
+            words.forEach(word => word.style.setProperty('--word-light', '1'));
+        });
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1133,11 +1140,6 @@
                 observer.observe(child);
             });
         });
-        addEventListener('scroll', requestUpdate, { passive: true });
-        addEventListener('resize', requestUpdate, { passive: true });
-        reduced.addEventListener('change', requestUpdate);
-        document.fonts.ready.then(requestUpdate);
-        updateWords();
     })();
     </script>
 
