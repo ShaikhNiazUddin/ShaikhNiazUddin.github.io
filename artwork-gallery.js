@@ -365,7 +365,7 @@ function initializeGallery(gallery) {
   function normalize() {
     // Move between identical copies outside the viewport, with no visible jump.
     const shift = Math.floor((position - base) / period) * period;
-    if (shift) { position -= shift; target -= shift; }
+    if (shift) { position -= shift; target -= shift; if(drag)drag.anchor-=shift; }
   }
   function animate(now) {
     frameId = 0;
@@ -447,7 +447,7 @@ function initializeGallery(gallery) {
   gallery.addEventListener('pointerdown', event => {
     if (event.button !== 0) return;
     clearTimeout(snapTimer);
-    drag = {x:event.clientX,y:event.clientY,startX:event.clientX,moved:0,horizontal:event.pointerType!=='touch',image:event.target.closest('.artwork')?.querySelector('img')};
+    drag = {x:event.clientX,y:event.clientY,startX:event.clientX,moved:0,touch:event.pointerType==='touch',anchor:centerTarget(target),horizontal:event.pointerType!=='touch',image:event.target.closest('.artwork')?.querySelector('img')};
     target = position;
     if(drag.horizontal){gallery.setPointerCapture(event.pointerId);gallery.classList.add('dragging');}
   });
@@ -460,7 +460,11 @@ function initializeGallery(gallery) {
       drag.horizontal=true;gallery.setPointerCapture(event.pointerId);gallery.classList.add('dragging');
     }
     drag.moved += Math.abs(drag.x - event.clientX);
-    target += drag.x - event.clientX;
+    if(drag.touch){
+      // Follow the finger a little; only release advances the selected artwork.
+      const travel=drag.startX-event.clientX;
+      target=drag.anchor+Math.max(-stride*.4,Math.min(stride*.4,travel*.55));
+    }else target += drag.x - event.clientX;
     drag.x = event.clientX;
     wake();
   });
@@ -468,11 +472,17 @@ function initializeGallery(gallery) {
     if (!drag) return;
     const clickedImage = event.type === 'pointerup' && drag.moved < 6 ? drag.image : null;
     const horizontal=drag.horizontal;
+    const gesture=drag;
     drag = null;
     if (clickedImage) openArtwork(clickedImage);
     gallery.classList.remove('dragging');
-    if(horizontal&&event.type==='pointerup')target = centerTarget(target);
-    resumeAt=performance.now()+700;setTimeout(wake,720);
+    if(horizontal&&gesture.touch){
+      const travel=gesture.startX-gesture.x;
+      const advance=event.type==='pointerup'&&Math.abs(travel)>=24?Math.sign(travel):0;
+      target=gesture.anchor+advance*stride;
+    }else if(horizontal&&event.type==='pointerup')target = centerTarget(target);
+    resumeAt=performance.now()+(gesture.touch?1800:700);
+    clearTimeout(driftResumeTimer);driftResumeTimer=setTimeout(wake,gesture.touch?1820:720);
     wake();
   }
   gallery.addEventListener('pointerup', stopDrag);
