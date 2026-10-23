@@ -485,7 +485,7 @@
         }
         #about { -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
     </style>
-<link rel="stylesheet" href="organization-work.css"><script src="artwork-gallery.js" defer></script><script src="organization-work.js" defer></script><link rel="stylesheet" href="site-polish.css"><link rel="stylesheet" href="hero-calligraphy.css"><script src="hero-calligraphy.js" defer></script><link rel="stylesheet" href="portfolio-loader.css"><script src="portfolio-loader.js" defer></script><link rel="stylesheet" href="passion-door.css"><script src="passion-door.js" defer></script><script src="home-logo.js" defer></script><script src="reactive-glass.js" defer></script></head>
+<link rel="stylesheet" href="organization-work.css"><script src="artwork-gallery.js" defer></script><script src="organization-work.js" defer></script><link rel="stylesheet" href="site-polish.css"><link rel="stylesheet" href="hero-calligraphy.css"><script src="hero-calligraphy.js" defer></script><link rel="stylesheet" href="portfolio-loader.css"><script src="portfolio-loader.js" defer></script><link rel="stylesheet" href="passion-door.css"><script src="passion-door.js" defer></script><script src="home-logo.js" defer></script><script src="reactive-glass.js" defer></script><link rel="stylesheet" href="gentle-scroll.css"><script src="gentle-scroll.js" defer></script></head>
 <body class="bg-palette-black text-palette-lightgrey font-sans antialiased selection:bg-palette-crimson selection:text-white min-h-screen flex flex-col justify-between overflow-x-hidden">
 <div class="portfolio-loader" role="region" aria-label="Portfolio introduction">
 <div class="loader-word" aria-label="Portfolio"><span aria-hidden="true">PORT</span><span class="loader-art" aria-hidden="true"><img src="artworks/bangla-typography/lettering/476017805_122151797912357300_2247948479329770162_n--jpg.webp" alt=""><img src="artworks/bangla-typography/lettering/476079316_122151797972357300_8660503932024443208_n--jpg.webp" alt=""><img src="artworks/bangla-typography/lettering/476106877_122151797828357300_2714550559650615253_n%20%281%29--jpg.webp" alt=""><img src="artworks/bangla-typography/lettering/485647402_17870883861325629_332027215192450896_n.webp" alt=""><img src="artworks/bangla-typography/lettering/542943067_17892157050325629_2858688447425471685_n.webp" alt=""><img src="artworks/bangla-typography/lettering/544329092_17892745548325629_3523128038941729574_n.webp" alt=""><img src="artworks/bangla-typography/graphic-type/19--png.webp" alt="" data-loader-final></span><span aria-hidden="true">FOLIO</span></div>
@@ -1195,73 +1195,7 @@
         updateHeader();
     })();
     </script>
-    <script>
-    (() => {
-        const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-        const pages = [...document.querySelectorAll('.hero-landing, section[id], footer[id]')];
-        let locked = false;
-        let quietTimer;
-        let safetyTimer;
-        function releaseAfterQuiet() {
-            clearTimeout(quietTimer);
-            quietTimer = setTimeout(() => { locked = false; }, 220);
-        }
-        // Keep each gesture locked until the eased section transition finishes.
-        addEventListener('wheel', event => {
-            if (reduced.matches || event.ctrlKey || Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
-            if (document.getElementById('menu-btn').getAttribute('aria-expanded') === 'true') return;
-            if (event.target.closest('#project-modal, #org-panel, #menu, textarea, input, select')) return;
-            if (locked) {
-                event.preventDefault();
-                return;
-            }
-            if (Math.abs(event.deltaY) < 8) return;
-            const y = scrollY;
-            const tops = pages.map(page => page.offsetTop);
-            // Sticky elements retain their original position in the document.
-            tops[0] = 0;
-            let index = 0;
-            for (let i = 1; i < tops.length; i++) {
-                if (y + 90 >= tops[i]) index = i;
-            }
-            const down = event.deltaY > 0;
-            const currentPage = pages[index];
-            const pageTop = tops[index];
-            const pageBottom = pageTop + currentPage.offsetHeight;
-            const fitsScreen = currentPage.offsetHeight <= innerHeight + 100;
-            const atStart = y <= pageTop + 60;
-            const aboutRunway = Math.max(1, currentPage.offsetHeight - innerHeight);
-            const aboutComplete = currentPage.id === 'about' &&
-                y - pageTop >= aboutRunway / 1.15;
-            const atEnd = aboutComplete || y + innerHeight >= pageBottom - 60;
-            let target = -1;
-            if (down && (index === 0 || fitsScreen || atEnd)) target = index + 1;
-            if (!down && atStart) target = index - 1;
-            if (!down && index === 0 && y > 0) target = 0;
-            if (target < 0 || target >= pages.length) return;
-            event.preventDefault();
-            locked = true;
-            clearTimeout(safetyTimer);
-            const startY = scrollY;
-            const distance = tops[target] - startY;
-            const duration = Math.min(1750, Math.max(1050, 900 + Math.abs(distance) * .55));
-            const started = performance.now();
-            const previousBehavior = document.documentElement.style.scrollBehavior;
-            document.documentElement.style.scrollBehavior = 'auto';
-            function glide(now) {
-                const progress = Math.min(1, (now - started) / duration);
-                const eased = progress * progress * progress * (progress * (progress * 6 - 15) + 10);
-                window.scrollTo({ top: startY + distance * eased, behavior: 'instant' });
-                if (progress < 1) requestAnimationFrame(glide);
-                else {
-                    document.documentElement.style.scrollBehavior = previousBehavior;
-                    safetyTimer = setTimeout(() => { locked = false; }, 160);
-                }
-            }
-            requestAnimationFrame(glide);
-        }, { passive: false });
-    })();
-    </script>
+    
     <script>
     (() => {
         const hero = document.querySelector('.hero-landing');
