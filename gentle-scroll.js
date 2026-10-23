@@ -3,7 +3,7 @@
  const sections=[...document.querySelectorAll(personal?'.home-intro,#memories,#sketchbooks,.film-page,#the-end':'.hero-landing,section[id],footer[id]')];
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
  let timer=0,frame=0,touching=false,animating=false,previousBehavior='';
- function blocked(){return document.querySelector('dialog[open],#org-panel:not([hidden]),#project-modal:not(.hidden)')||document.fullscreenElement||document.querySelector('#menu-btn[aria-expanded="true"]');}
+ function blocked(){return document.documentElement.dataset.landingTransition||document.querySelector('dialog[open],#org-panel:not([hidden]),#project-modal:not(.hidden)')||document.fullscreenElement||document.querySelector('#menu-btn[aria-expanded="true"]');}
  function cancel(){
   clearTimeout(timer);cancelAnimationFrame(frame);frame=0;
   if(animating)document.documentElement.style.scrollBehavior=previousBehavior;
